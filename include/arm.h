@@ -21,5 +21,6 @@ private:
   static Arm* _instance;
   bool _stopTask;
   vex::task* _armTask;
+  float currentAngle;
 
 }; // class Arm
