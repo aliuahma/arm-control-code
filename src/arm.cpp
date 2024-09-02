@@ -31,10 +31,11 @@ void Arm::setAngle(float desiredAngle) {
 int Arm::armControl() {
   float lastError = 0;
   while(!_stopTask) {
-    for (auto arm : _arms) {
-      currentAngle += arm->position(deg);
+    float change = 0.0;
+    for (const auto arm : _arms) {
+      change += arm->position(deg);
     }
-    currentAngle /= _arms.size();
+    currentAngle += change / _arms.size();
     float error = _desiredAngle - currentAngle;
     float derivative = error - lastError;
     float armPower = error * _kP + derivative * _kD;
