@@ -19,6 +19,11 @@ Arm::~Arm() {
   delete _armTask;
 }
 
+void Arm::reset() {
+  this->currentAngle = 0.0;
+  this->_desiredAngle = 0.0;
+}
+
 void Arm::setAngle(float desiredAngle) {
   _desiredAngle = desiredAngle;
 } 
