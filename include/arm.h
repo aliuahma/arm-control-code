@@ -8,6 +8,7 @@ public:
 
   Arm(const std::vector<vex::motor*>& arms, float kP, float kD);
   ~Arm();
+  void reset();
   void setAngle(float desiredAngle);
   static int armControlWrapper();
 
