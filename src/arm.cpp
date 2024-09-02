@@ -10,6 +10,7 @@ Arm(const std::vector<vex::motor*>& arms, float kP, float kD) {
   _instance = this;
   _stopTask = false;
   _armTask = new vex::task(armControlWrapper);
+  currentAngle = 0.0 // initial state
 } 
 
 Arm::~Arm() {
@@ -25,7 +26,6 @@ void Arm::setAngle(float desiredAngle) {
 int Arm::armControl() {
   float lastError = 0;
   while(!_stopTask) {
-    float currentAngle = 0;
     for (auto arm : _arms) {
       currentAngle += arm->position(deg);
     }
